@@ -1,3 +1,34 @@
+/* FXF - START ---------------------------------------------------------------*/
+
+
+
+@media screen {
+  #wrapper {
+    max-width:960px;
+  }
+
+  #top-area .column:last-child {
+   margin-right: 0;
+  }
+  #copyright{
+    padding: 0 3%;
+  }
+
+  #main-menu a{
+    padding-top: 13px;
+    padding-left: 17px;
+    padding-right: 13px;
+    padding-bottom: 13px;
+  }
+
+  #main-menu ul .expanded a{
+    padding-right: 13px;
+  }
+  
+}
+/* FXF - END -----------------------------------------------------------------*/
+
+
 @media screen and (max-width: 1152px) {
 
   #wrapper {
@@ -39,7 +70,21 @@
 
 @media screen and (max-width: 640px) {
 
-  /*remove*/
+/*remove*/
+
+
+/* FXF - START ---------------------------------------------------------------*/
+
+ /*FXF START - Remove down pointing arrowhead to parent menu items with children items */
+#main-menu ul li.expanded > a:after {
+   content: '';
+  }
+/*FXF END - Remove down pointing arrowhead to parent menu items with children items */
+
+/* FXF - END -----------------------------------------------------------------*/
+
+
+
 
   #logo{
     margin: 13px 10px;
