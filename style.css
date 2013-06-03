@@ -946,6 +946,10 @@ ul.primary {
   padding: 0;
 }
 
+ul.primary li{
+  display: inline-block;
+}
+
 ul.primary li a {
   background: none;
   border: none;
