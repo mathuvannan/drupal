@@ -1572,6 +1572,10 @@ ol.search-results { padding-left: 0; }
   display: block;
 }
 
+.contextual-links-region {
+  position: inherit;
+}
+
 /*Admin*/
 
 #toolbar li, .tabs.primary li{
