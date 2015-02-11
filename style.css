@@ -1,3 +1,15 @@
+/* --------------------------------------------- 
+
+* Filename:     style.css
+* Version:      1.0.0 (2014-10-14)
+* Website:      http://www.zymphonies.com
+                http://www.freebiezz.com
+* Description:  System Style
+* Author:       Zymphonies Dev Team
+                info@zymphonies.com
+
+-----------------------------------------------*/
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -63,19 +75,19 @@ table {
   height:1%;
 }
 
-/*
-  Style HTML Tags
-*/
+*{
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 
 body {
   font-family: Tahoma, Georgia, Arial, sans-serif;
-  line-height: 1.5em;
   background: #fff;
-  background-position-y: 116px;
   color: #515F5C;
   font-family: Arial,Helvetica,sans-serif;
   font-size:12px;
-  line-height:1.62em;
+  line-height:160%;
 }
 
 a {
@@ -333,7 +345,7 @@ audio {
 }
 
 #header {
-  max-width: 955px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -374,19 +386,15 @@ audio {
 }
 
 #main-menu {
-  
-  max-width: 955px;
+  max-width: 1000px;
   margin: 0 auto;
   position: relative;
-  z-index: 11;
-  top: -11px;
   border-bottom: 2px solid rgb(251, 90, 2);
   background: none repeat scroll 0 0 rgb(39, 39, 39);
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.03);
   -webkit-box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.03);
   -moz-box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.03);
   -o-box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.03);
-  margin-bottom: -15px;
 }
 
 #main-menu ul {
@@ -444,12 +452,12 @@ ul li, ul.menu li, ul.links li, .item-list ul li {
 }
 
 .drop-down-toggle {
-  position:absolute;
-  top:7px;
-  right:16px;
-  display:none;
-  width:20px;
-  height:20px;
+  position: absolute;
+  top: 5px;
+  right: 16px;
+  display: none;
+  width: 28px;
+  height: 28px;
   border-radius:15px;
   background:#333;
   background:-moz-linear-gradient(#333,#444);
@@ -461,13 +469,13 @@ ul li, ul.menu li, ul.links li, .item-list ul li {
 }
 
 .drop-down-arrow {
-  display:block;
-  width:0;
-  height:0;
-  margin:8px 0 0 5px;
-  border-top:5px solid #aaa;
-  border-left:transparent 5px solid;
-  border-right:transparent 5px solid;
+  display: block;
+  width: 0;
+  height: 0;
+  margin: 8px 0 0 3px;
+  border-top: 8px solid #aaa;
+  border-left: transparent 8px solid;
+  border-right: transparent 8px solid;
 }
 
 #main-menu li li {
@@ -477,7 +485,7 @@ ul li, ul.menu li, ul.links li, .item-list ul li {
   margin:0;
 }
 
-#main-menu li li a {
+#main-menu li li a{
   color: #C5C5C5;
   min-width: 150px;
   margin: 0;
@@ -486,11 +494,8 @@ ul li, ul.menu li, ul.links li, .item-list ul li {
   font-size: 11px;
   text-align: left;
   overflow: hidden;
-  padding: 2% 5%;
+  padding: 10px;
   font-weight: normal;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
 }
 
 #main-menu li li:first-child > a {
@@ -514,13 +519,14 @@ ul li, ul.menu li, ul.links li, .item-list ul li {
 }
 
 #main-menu li ul ul {
-  margin:-33px 0 0 190px !important;
+  margin:-40px 0 0 190px !important;
 }
 
 #main-menu li:hover > ul,
 #main-menu li li:hover > ul,
 #main-menu li li li:hover > ul {
   display:block;
+  overflow: visible !important;
 }
 
 #main-menu .nav-toggle {
@@ -547,9 +553,6 @@ ul li, ul.menu li, ul.links li, .item-list ul li {
   overflow: hidden;
   padding: 1%;
   background: #fff;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
 }
 
 .region-slideshow{
@@ -907,7 +910,7 @@ input.form-checkbox, input.form-radio {
 }
 
 .form-text {
-  padding: 4px 5px;
+  padding: 6px;
 }
 
 /*-------------------------------------------*
@@ -1307,8 +1310,6 @@ fieldset .fieldset-description { margin-top: 5px; margin-bottom: 1em; line-heigh
 
 input { margin: 2px 0; padding: 4px; }
 
-input, textarea {  font-size: 0.929em; }
-
 textarea { line-height: 1.5; }
 
 textarea.form-textarea, select.form-select { padding: 4px; }
@@ -1386,15 +1387,6 @@ input[type="button"]:hover {
 
 #block-search-form .content { margin-top: 0; }
 
-#search-form input#edit-keys,
-#block-search-form .form-item-search-block-form input { 
-  float: left; 
-  font-size: 1em; 
-  height: 1.143em; 
-  margin-right: 5px; 
-  width: 9em; 
-}
-
 #search-block-form input.form-submit,
 #search-form input.form-submit { 
   margin-left: 0; 
@@ -1414,7 +1406,7 @@ input[type="button"]:hover {
 #search-form input.form-submit:hover,
 #search-form input.form-submit:focus { background-position: center bottom; }
 
-#search-block-form .form-actions{ float: left; padding: 0; }
+#search-block-form .form-actions{ padding: 0; }
 
 #search-block-form .form-actions input { margin: 1px 0; }
 
@@ -1496,14 +1488,13 @@ ol.search-results { padding-left: 0; }
 
 #footer-area {
   position:relative;
-  padding:1.76% 1.52% 0 1.76%;
   color:rgb(128, 128, 128);
 }
 
 #footer-area .column {
   float:left;
   width:30.8%;
-  margin:0 0 1.9% 3.8%;
+  margin: 10px;
 }
 
 #footer-area .column:first-child {
@@ -1531,7 +1522,7 @@ ol.search-results { padding-left: 0; }
   text-align:right;
 }
 
-#copyright p {
+.footer_inner_credit p {
   margin:0;
 }
 

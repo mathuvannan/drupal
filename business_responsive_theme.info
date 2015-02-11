@@ -1,5 +1,5 @@
 name = Business Responsive Theme
-description = business responsive theme is a responsive theme its perfect for all sorts of corporate and small business websites: for support <b>zymphonies@gmail.com, www.zymphonies.com</b>
+description = Drupal Responsive Theme Developed by <a href="http://www.zymphonies.com">Zymphonies</a> & Designed by <a href="http://www.freebiezz.com">FreeBiezz</a>. For free theme support, installation, bug reporting <a href="http://www.freebiezz.com/forum" rel="nofollow">support forum</a>. Contact us for Drupal Design & Development <a href="mailto:info@zymphonies.com">info@zymphonies.com</a> 
 core = 7.x
 
 engine = phptemplate
@@ -31,5 +31,5 @@ features[] = main_menu
 features[] = secondary_menu
 settings[breadcrumbs]  = 1
 settings[social_links]  = 1
-settings[twitter_username] = "shanidkv"
-settings[facebook_username] = "shanidkv"
+settings[twitter_username] = "zymphonies"
+settings[facebook_username] = "zymphonies"
