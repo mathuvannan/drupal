@@ -33,9 +33,4 @@ settings[breadcrumbs]  = 1
 settings[social_links]  = 1
 settings[twitter_username] = "zymphonies"
 settings[facebook_username] = "zymphonies"
-; Information added by Drupal.org packaging script on 2015-02-12
-version = "7.x-1.4"
-core = "7.x"
-project = "business_responsive_theme"
-datestamp = "1423710782"
 
