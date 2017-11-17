@@ -1564,7 +1564,7 @@ ol.search-results { padding-left: 0; }
 }
 
 .contextual-links-region {
-  position: inherit;
+  position: relative;
 }
 
 /*Admin*/
