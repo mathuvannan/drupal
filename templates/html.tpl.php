@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 <head>
 <?php print $head; ?>
 <title><?php print $head_title; ?></title>
