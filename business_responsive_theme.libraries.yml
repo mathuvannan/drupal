@@ -30,3 +30,9 @@ global-components:
     - core/drupal
     - core/drupalSettings
     - core/jquery.once
+
+fontawesome:
+  version: 1.x
+  css:
+    theme:
+      includes/fontawesome/css/font-awesome.css: {}
