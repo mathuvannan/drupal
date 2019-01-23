@@ -34,6 +34,19 @@ function business_responsive_theme_preprocess_page(&$variables) {
     $variables['topwidget_class'] = 'col-md-12';
   }
 
+  // Add Responsive class for Middle Widget.
+  if (!empty($variables['page']['middle_first']) && !empty($variables['page']['middle_second']) && !empty($variables['page']['middle_third'])) {
+    $variables['middle_class'] = 'col-md-4';
+    $variables['middle_third_class'] = 'col-md-4';
+  }
+  elseif((!empty($variables['page']['middle_first']) && !empty($variables['page']['middle_second'])) or (!empty($variables['page']['middle_first']) && !empty($variables['page']['middle_third'])) or (!empty($variables['page']['middle_third']) && !empty($variables['page']['middle_second']))) {
+    $variables['middle_class'] = 'col-md-6';
+    $variables['middle_third_class'] = 'col-md-6';
+  }
+  else {
+    $variables['middle_class'] = 'col-md-12';
+  }
+
   // Add Responsive class for Bottom Widget.
   if (!empty($variables['page']['bottom_first']) && !empty($variables['page']['bottom_second']) && !empty($variables['page']['bottom_third']) && !empty($variables['page']['bottom_forth'])) {
     $variables['bottom_class'] = 'col-md-3';
@@ -46,6 +59,20 @@ function business_responsive_theme_preprocess_page(&$variables) {
   }
   else {
     $variables['bottom_class'] = 'col-md-12';
+  }
+
+  // Add responsive class for price widget.
+  if (!empty($variables['page']['pricetable_first']) && !empty($variables['page']['pricetable_second']) && !empty($variables['page']['pricetable_third']) && !empty($variables['page']['pricetable_forth'])) {
+    $variables['pricetable_class'] = 'col-sm-3';
+  }
+  else if (!empty($variables['page']['pricetable_first']) && !empty($variables['page']['pricetable_second']) && !empty($variables['page']['pricetable_third'])) {
+    $variables['pricetable_class'] = 'col-sm-4';
+  }
+  else if((!empty($variables['page']['pricetable_first']) && !empty($variables['page']['pricetable_second'])) or (!empty($variables['page']['pricetable_first']) && !empty($variables['page']['pricetable_third'])) or (!empty($variables['page']['pricetable_third']) && !empty($variables['page']['pricetable_second']))) {
+    $variables['pricetable_class'] = 'col-sm-6';
+  }
+  else {
+    $variables['pricetable_class'] = 'col-md-12';
   }
 
   // Add Responsive class for footer.
@@ -88,6 +115,23 @@ function business_responsive_theme_preprocess_page(&$variables) {
   $variables['rss_url'] = theme_get_setting('rss_url');
   $variables['copyright_text'] = theme_get_setting('copyright_text');  
   $variables['show_credit_link'] = theme_get_setting('show_credit_link');
+
+
+  //To get the current URL
+  $current_url  = \Drupal::request()->getRequestUri();
+  $current_path = explode("/", $current_url);
+  $variables['current_path'] = $current_path[2];
+  
+  
+  // Slider
+  // Assign Variable for slider
+  if ($variables['is_front']) {
+    if (theme_get_setting('show_slideshow','business_responsive_theme') == 1) {
+      $variables['show_slideshow'] = 1;
+      $variables['slider_content'] = business_responsive_theme_get_slider_content();
+    }
+  }
+
 }
 
 /**
@@ -106,6 +150,34 @@ function business_responsive_theme_preprocess_menu(&$variables, $hook) {
       }
     }
   }
+}
+
+/**
+ * Slider
+ * Implements custom function for get slider content.
+ */
+function business_responsive_theme_get_slider_content() {
+  $slider_content = array();
+  for ($i = 1; $i <= theme_get_setting('no_of_slides'); $i++) {
+    $fid = theme_get_setting('slide_image_path'.$i,'business_responsive_theme');
+    if (!empty($fid)) {
+      $file = file_load($fid[0]);
+      $uri = $file->getFileUri();
+      $path = file_create_url($uri);
+    }
+    else {
+      $path = base_path() . drupal_get_path('theme', 'business_responsive_theme') . theme_get_setting('slide_image_path_' . $i, 'business_responsive_theme');
+    }
+    $slider_content[$i] = '<li>
+      <img src="' . $path . '" alt="Slider Banner" />
+      <div class="slider-caption">
+        <h2 class="slider-title">' . theme_get_setting('slide_title_' . $i, 'business_responsive_theme').'</h2>
+        <div class="clearfix"><p class="slider-description">' . theme_get_setting('slide_description_' . $i, 'business_responsive_theme').'</p></div>
+        <a href=' . theme_get_setting('slide_url_' . $i, 'business_responsive_theme') . ' class="more-link">Read more</a>
+      </div>
+    </li>';
+  }
+  return $slider_content;
 }
 
 /**
@@ -157,7 +229,7 @@ function business_responsive_theme_form_system_theme_settings_alter(&$form, \Dru
     '#default_value' => theme_get_setting('rss_url'),
   );
 
-  // Custom submit to save the file permenant.
+  // Custom submit to save the file permanent.
   $form['#submit'][] = 'business_responsive_theme_settings_form_submit';
 
   //Copyright
@@ -182,8 +254,79 @@ function business_responsive_theme_form_system_theme_settings_alter(&$form, \Dru
   );
   $form['business_responsive_theme_settings']['credit_link']['show_credit_link'] = array(
     '#type' => 'checkbox',
-    '#title' => t("Show/Hide credit text"),
+    '#title' => t("Show/hide credit text"),
     '#default_value' => theme_get_setting('show_credit_link'),
     '#description'   => t("Recommend you to display credit in footer"),
   );
+
+
+  //Slide show configure 
+  $form['business_responsive_theme_settings']['slideshow'] = array(
+    '#type' => 'details',
+    '#title' => t('Front page slideshow'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  );
+  $form['business_responsive_theme_settings']['slideshow']['no_of_slides'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Number of slides'),
+    '#default_value' => theme_get_setting('no_of_slides'),
+    '#description'  => t("Enter the number of slides required & Save configuration"),
+    '#markup' => '<div class="messages messages--warning">Clear caches after making any changes in theme settings. <a href="../../config/development/performance">Click here to clear cache</a></div>',
+  );
+  $form['business_responsive_theme_settings']['slideshow']['show_slideshow'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Show Slideshow'),
+    '#default_value' => theme_get_setting('show_slideshow'),
+    '#description'   => t("Show/Hide Slideshow in home page"),
+  );
+  $form['business_responsive_theme_settings']['slideshow']['slide'] = array(
+    '#markup' => t('Change the banner image, title, description and link using below fieldset'),
+  );
+  
+  for ($i = 1; $i <= theme_get_setting('no_of_slides'); $i++) {
+    $form['business_responsive_theme_settings']['slideshow']['slide' . $i] = array(
+      '#type' => 'details',
+      '#title' => t('Slide '.$i),
+      '#collapsible' => TRUE,
+      '#collapsed' => TRUE,
+    );
+    $form['business_responsive_theme_settings']['slideshow']['slide' . $i]['slide_image_path' . $i] = array(
+      '#type' => 'managed_file',
+      '#title' => t('Slide '.$i.' Image'),
+      '#default_value' => theme_get_setting('slide_image_path'.$i,'business_responsive_theme'),
+      '#upload_location' => 'public://',
+    );
+    $form['business_responsive_theme_settings']['slideshow']['slide' . $i]['slide_title_' . $i] = array(
+      '#type' => 'textfield',
+      '#title' => t('Slide '.$i.' Title'),
+      '#default_value' => theme_get_setting('slide_title_' . $i,'business_responsive_theme'),
+    );
+    $form['business_responsive_theme_settings']['slideshow']['slide' . $i]['slide_description_' . $i] = array(
+      '#type' => 'textarea',
+      '#title' => t('Slide '.$i.' Description'),
+      '#default_value' => theme_get_setting('slide_description_' . $i,'business_responsive_theme'),
+    );    
+    $form['business_responsive_theme_settings']['slideshow']['slide' . $i]['slide_url_' . $i] = array(
+      '#type' => 'textfield',
+      '#title' => t('Slide '.$i.' URL'),
+      '#default_value' => theme_get_setting('slide_url_' . $i,'business_responsive_theme'),
+    );
+
+    // Make the uploaded images permanent.
+    $image = theme_get_setting('slide_image_path'.$i,'business_responsive_theme');
+    if(!empty($image)){
+      $file = File::load($image[0]);
+      $file->status = FILE_STATUS_PERMANENT;
+      $file->save();
+      $file_usage = \Drupal::service('file.usage');
+      $file_usage_check = $file_usage->listUsage($file);
+      if (empty($file_usage_check)) {
+        $file_usage->add($file, 'business_responsive_theme', 'theme', $image[0]);
+      }
+    }
+
+  }
+
+  
 }

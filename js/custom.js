@@ -1,11 +1,10 @@
 /* --------------------------------------------- 
 
 * Filename:     custom-style.js
-* Version:      1.0.0 (2016-01-12)
-* Website:      http://www.zymphonies.com
-                http://www.freebiezz.com
+* Version:      1.0.0 (2019-01-22)
+* Website:      https://www.zymphonies.com
 * Description:  System JS
-* Author:       Zymphonies Dev Team
+* Author:       Zymphonies Team
                 info@zymphonies.com
 
 -----------------------------------------------*/
@@ -26,4 +25,10 @@ jQuery(document).ready(function($){
 			$('.region-primary-menu').hide();
 	    });
 	}
+
+	//flexslider
+	jQuery('.flexslider').flexslider({
+    	animation: "slide"	
+    });
+
 });

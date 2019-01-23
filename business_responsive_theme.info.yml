@@ -7,27 +7,48 @@ core: 8.x
 #Libraries
 libraries:
   - business_responsive_theme/bootstrap
-  - business_responsive_theme/fontawesome  
+  - business_responsive_theme/fontawesome
+  - business_responsive_theme/smartmenus
+  - business_responsive_theme/flexslider
   - business_responsive_theme/global-components
 
 #Regions
 regions:
   header: 'Header'
-  primary_menu: 'Primary Menu'
-  slideshow: 'Slideshow'  
-  topwidget_first: 'Top First Widget'
-  topwidget_second: 'Top Second Widget'
-  topwidget_third: 'Top Third Widget' 
+  search: 'Search'
+  primary_menu: 'Primary menu'
+
+  topwidget_first: 'Top First widget'
+  topwidget_second: 'Top Second widget'
+  topwidget_third: 'Top Third widget' 
+
+  middle_first: 'Middle first widget'
+  middle_second: 'Middle second widget'
+  middle_third: 'Middle third widget'
+
   highlighted: 'Highlighted' 
-  page_title: 'Page Title'
+  page_title: 'Page title'
   breadcrumb: 'Breadcrumb'
   content: 'Content'
-  sidebar_first: 'Left Sidebar'
-  sidebar_second: 'Right Sidebar' 
-  footer_first: 'Footer First Widget'
-  footer_second: 'Footer Second Widget'
-  footer_third: 'Footer Third Widget'
-  footer_menu: 'Footer Menu'
-  auto_hidden_block: 'Auto hidden blocks'
+  sidebar_first: 'Left sidebar'
+  sidebar_second: 'Right sidebar'
+
+  pricetable_first: 'Price table first widget'
+  pricetable_second: 'Price table second widget'
+  pricetable_third: 'Price table third widget'
+  pricetable_forth: 'Price table forth widget'
+
+  bottom_first: 'Bottom first widget'
+  bottom_second: 'Bottom second widget'
+  bottom_third: 'Bottom third widget'
+
+  footer_first: 'Footer first widget'
+  footer_second: 'Footer second widget'
+  footer_third: 'Footer third widget'
+
+  footer_menu: 'Footer menu'
+
   page_top: 'Page top'
   page_bottom: 'Page bottom'
+
+  auto_hidden_block: 'Auto hidden blocks'

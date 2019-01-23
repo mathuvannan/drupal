@@ -2,32 +2,38 @@
 /* --------------------------------------------- 
 
 * Filename:     custom-style.css
-* Version:      1.0.0 (2016-01-12)
+* Version:      1.0.0 (2019-01-22)
 * Website:      http://www.zymphonies.com
-                http://www.freebiezz.com
 * Description:  System Style
-* Author:       Zymphonies Dev Team
+* Author:       Zymphonies Team
                 info@zymphonies.com
 
 -----------------------------------------------*/
 
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
+
 body{
-  font-family: 'Arial', Helvetica, sans-serif;
-  font-size: 12px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
   line-height: 1.62em;
-  color: #333;
+  color: #444;
   overflow-x: hidden;
 }
 
 p{ margin: 0 0 20px 0; }
 
-h1, .h1{ font-size: 22px; color: #000; }
+.h1, .h2, .h3, h1, h2, h3 {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
 
-h2, .h2{ font-size: 20px; color: #000; }
+h1, .h1{ font-size: 2em; font-weight: normal; color: #333; }
 
-h3, .h3{ font-size: 16px; color: #000; }
+h2, .h2{ font-size: 1.8em; font-weight: normal; color: #333; }
 
-h4, .h4{ font-size: 14px; color: #000; }
+h3, .h3{ font-size: 1.6em; font-weight: normal; color: #333; }
+
+h4, .h4{ font-size: 1.4em; font-weight: normal; color: #333; }
 
 img{ max-width: 100%; }
 
@@ -55,12 +61,8 @@ ul.links.inline li{
   margin-bottom: 20px;
 }
 
-.container {
-  max-width: 1000px;
-}
-
 .main-header{
-  padding: 10px 0;
+  padding: 20px 0;
   background-size: cover;
   position: relative;
 }
@@ -76,6 +78,7 @@ ul.links.inline li{
 .main-header .region{
   position: relative;
   z-index: 2;
+  margin-bottom: 15px;
 }
 
 /*region header*/
@@ -92,10 +95,11 @@ ul.links.inline li{
   display: inline-block;
   vertical-align: middle;
   line-height: 100%;
+  color: #666;
 }
 
 .site-name a{
-  font-size: 26px;
+  font-size: 22px;
   color: #272727;
 }
 
@@ -232,19 +236,22 @@ ul.links.inline li{
 .social-media{
   margin: 10px 0;
   overflow: hidden;
-  float: left;
+  text-align: center;
+  display: none;
 }
 
 .social-media a {
   width: 30px;
   height: 30px;
   color: #fff;
-  float: left;
+  display: inline-block;
   margin: 0 10px 0 0;
   text-align: center;
   background: #3262b9;
   font-size: 14px;
   line-height: 220%;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
 }
 
 .social-media a.google-plus{
@@ -274,7 +281,7 @@ ul.links.inline li{
 /*FORM*/
 
 input, button, select, textarea{
-  padding: 9px;
+  padding: 5px;
   border: 1px solid #C7C7C7;
 }
 
@@ -294,11 +301,13 @@ input[type="submit"]{
   border: 1px solid #dbdbdb;
   color: #333;
   font-weight: bold;
-  padding: 9px;
+  padding: 5px;
 }
 
 .btn:hover, 
 input[type="submit"]:hover{
+  color: #333;
+  border: 1px solid #dbdbdb;
   background-image: -ms-linear-gradient(top, #DBDBDB 0%, #F2F2F2 100%);
   background-image: -moz-linear-gradient(top, #DBDBDB 0%, #F2F2F2 100%);
   background-image: -o-linear-gradient(top, #DBDBDB 0%, #F2F2F2 100%);
@@ -340,8 +349,7 @@ nav h2{
 
 .menu-base-theme li a{
   background: #FBFBFB;
-  color: #999;
-  font-weight: bold;
+  color: #000;
 }
 
 .main-menu {
@@ -383,15 +391,34 @@ nav h2{
   border-bottom: 1px solid #eee;
 }
 
-.breadcrumb ul{
+.breadcrumb ul,
+.breadcrumb ol{
   padding: 0;
 }
 
-.breadcrumb ul li{
+.breadcrumb ul li,
+.breadcrumb ol li{
   display: inline-block;
+  padding-right: 10px;
+}
+
+.breadcrumb ul li:after,
+.breadcrumb ol li:after{
+  content: ">";
+  padding-left: 10px;
+}
+
+.breadcrumb ul li:last-child:after,
+.breadcrumb ol li:last-child:after{
+  content: "";
+  padding: 0px;
 }
 
 /*search form*/
+
+.region-search{
+  display: none;
+}
 
 #search-block-form{
   display: table;
@@ -404,8 +431,12 @@ nav h2{
   vertical-align: top;
 }
 
-#search-block-form input{
+.block-search input{
   width: 100%;
+}
+
+.block-search{
+  margin: 0;
 }
 
 /*Demo typography*/
@@ -610,3 +641,58 @@ ul.links.inline li{
   padding: 12px;
   margin-top: -25px;
 }
+
+/*flexslider*/
+
+.flexslider{
+  border: 0;
+}
+
+.flexslider .slides > li{
+  position: relative;
+}
+
+.flexslider .slider-caption{
+  display: none;
+  position: absolute;
+  z-index: 99;
+  background: rgba(255, 255, 255, 0.67);
+  bottom: 10px;
+  padding: 20px;
+  left: 10px;
+  width: 50%;
+  font-size: 1.3em;
+  line-height: 140%;
+}
+
+.flexslider .slider-title{
+  margin-top: 0;
+  font-size: 1.8em;
+}
+
+.flexslider .flex-direction-nav a{
+  font-size: 0;
+}
+
+.flexslider .flex-direction-nav a:before{
+  color: #fff;
+  padding-top: 10px;
+}
+
+.price-table .region{
+  background: #eee;
+  padding: 20px;
+}
+
+.price-table .card-header h2{
+  color: #ff4a00;
+}
+
+.price-table .card-title{
+  color: green;
+}
+
+.price-table .block{
+  margin: 0;
+}
+

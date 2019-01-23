@@ -18,7 +18,6 @@ global-components:
     theme:
       css/sm-core-css.css: {}
       css/base.css: {}
-      css/font-awesome.css: {}
       css/custom-style.css: {}
       css/custom-media.css: {}
   js:  
@@ -31,8 +30,31 @@ global-components:
     - core/drupalSettings
     - core/jquery.once
 
+# flexslider
+flexslider:
+  version: 1.x
+  css:
+    theme:
+      includes/flexslider/css/flexslider.css: {}
+  js:
+    includes/flexslider/js/jquery.flexslider-min.js: {}
+  dependencies:
+    - core/jquery
+
+# Font awesome
 fontawesome:
   version: 1.x
   css:
     theme:
-      includes/fontawesome/css/font-awesome.css: {}
+      includes/fontawesome/css/fontawesome-all.css: {}
+
+# smartmenus
+smartmenus:
+  version: 1.x
+  css:
+    theme:
+      includes/smartmenus/sm-core-css.css: {}
+  js:
+    includes/smartmenus/jquery.smartmenus.min.js: {}
+  dependencies:
+    - core/jquery
