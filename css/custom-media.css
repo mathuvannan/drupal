@@ -12,11 +12,11 @@
     float: none;
   }
 
-  ..main-header{
-    padding: 10px 0;
+  .main-header{
+    padding: 20px 0;
   }
 
-  .main-header .region {
+  .main-header .region{
     margin: 0px;
   }
 

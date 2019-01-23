@@ -23,8 +23,8 @@ body{
 p{ margin: 0 0 20px 0; }
 
 .h1, .h2, .h3, h1, h2, h3 {
-    margin-top: 10px;
-    margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 h1, .h1{ font-size: 2em; font-weight: normal; color: #333; }
@@ -62,7 +62,7 @@ ul.links.inline li{
 }
 
 .main-header{
-  padding: 20px 0;
+  padding: 10px 0;
   background-size: cover;
   position: relative;
 }
@@ -73,12 +73,17 @@ ul.links.inline li{
   position: relative;
   z-index: 2;
   border-radius: 0;
+  min-height: auto;
 }
 
 .main-header .region{
   position: relative;
   z-index: 2;
-  margin-bottom: 15px;
+  margin-bottom: 0px;
+}
+
+.main-header .region-header{
+  display: inline-block;
 }
 
 /*region header*/
@@ -101,6 +106,10 @@ ul.links.inline li{
 .site-name a{
   font-size: 22px;
   color: #272727;
+}
+
+.site-name a:hover{
+  text-decoration: none;
 }
 
 /*Banner*/
@@ -325,10 +334,6 @@ input[type="submit"]:hover{
 
 /*MENU*/
 
-.main-menuwrap{
-  margin-bottom: 10px;
-}
-
 .navbar-default .navbar-toggle{
   background: #fff;
   margin-right: 0;
@@ -360,7 +365,6 @@ nav h2{
 .region-primary-menu{
   display: none;
   background: #fff;
-  border-radius: 3px;
   width: 100%;
   margin-top: 20px;
 }
@@ -380,6 +384,11 @@ nav h2{
 
 .navbar-toggle{
   z-index: 999;
+  background: #333;
+}
+
+.navbar-toggle .icon-bar {
+  background: #ffff;
 }
 
 /*breadcrumb*/
@@ -657,11 +666,11 @@ ul.links.inline li{
   position: absolute;
   z-index: 99;
   background: rgba(255, 255, 255, 0.67);
-  bottom: 10px;
+  bottom: 50px;
   padding: 20px;
-  left: 10px;
+  left: 50px;
   width: 50%;
-  font-size: 1.3em;
+  font-size: 1.2em;
   line-height: 140%;
 }
 
