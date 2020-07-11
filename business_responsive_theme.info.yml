@@ -2,7 +2,9 @@ name: Business Responsive Theme
 type: theme
 description: 'Zymphonies Drupal 8 Responsive Theme. Developed & Designed by <a href=http://www.zymphonies.com>Zymphonies</a><br/>Contact us for Drupal Design & Development <a href=mailto:info@zymphonies.com>info@zymphonies.com</a>'
 package: core
+base theme: false
 core: 8.x
+core_version_requirement: ^8 || ^9
 
 #Libraries
 libraries:
