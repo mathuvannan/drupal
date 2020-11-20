@@ -119,7 +119,13 @@ function business_responsive_theme_preprocess_page(&$variables) {
   //To get the current URL
   $current_url  = \Drupal::request()->getRequestUri();
   $current_path = explode("/", $current_url);
-  $variables['current_path'] = $current_path[2];
+  if (!empty($current_path)) {
+    $path = end($current_path);
+  }
+  else {
+    $path = '';
+  }
+  $variables['current_path'] = $path;
   
   // Slider
   // Assign Variable for slider
