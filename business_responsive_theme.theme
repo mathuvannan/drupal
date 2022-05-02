@@ -14,6 +14,8 @@ use Drupal\system\Form\ThemeSettingsForm;
 use Drupal\file\Entity\File;
 use Drupal\Core\Url;
 use Drupal\file\Plugin\Core\Entity\FileInterface;
+use Drupal\Component\Utility\Html;
+use Drupal\Component\Utility\UrlHelper;
 
 /**
  * Implements hook_preprocess_page() for block templates.
@@ -171,12 +173,17 @@ function business_responsive_theme_get_slider_content() {
     else {
       $path = base_path() . drupal_get_path('theme', 'business_responsive_theme') . theme_get_setting('slide_image_path_' . $i, 'business_responsive_theme');
     }
+
+    $sliderTitle = Html::escape(theme_get_setting('slide_title_' . $i, 'business_responsive_theme'));
+    $sliderDesc = Html::escape(theme_get_setting('slide_description_' . $i, 'business_responsive_theme'));
+    $sliderURL = UrlHelper::filterBadProtocol(theme_get_setting('slide_url_' . $i, 'business_responsive_theme'));
+
     $slider_content[$i] = '<li>
       <img src="' . $path . '" alt="Slider Banner" />
       <div class="slider-caption">
-        <h2 class="slider-title">' . theme_get_setting('slide_title_' . $i, 'business_responsive_theme').'</h2>
-        <div class="clearfix"><p class="slider-description">' . theme_get_setting('slide_description_' . $i, 'business_responsive_theme').'</p></div>
-        <a href=' . theme_get_setting('slide_url_' . $i, 'business_responsive_theme') . ' class="more-link">Read more</a>
+        <h2 class="slider-title">' . $sliderTitle .'</h2>
+        <div class="clearfix"><p class="slider-description">' . $sliderDesc .'</p></div>
+        <a href="' . $sliderURL . '" class="more-link">Read more</a>
       </div>
     </li>';
   }
